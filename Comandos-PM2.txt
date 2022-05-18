@@ -1,0 +1,11 @@
+## INIT FORK MODE
+pm2 start ./src/app.js --name="Server   1" --watch -- 8081
+
+## INIT CLUSTER MODE
+pm2 start ./src/app.js --name="Server   1" --watch -i max -- 8082
+
+## CHECK SERVERS CREATED
+pm2 list
+
+## LOGS
+pm2 logs

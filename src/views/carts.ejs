@@ -1,0 +1,119 @@
+<%- include('partials/header'); -%>
+<%- include('partials/nav'); -%>
+    <div class="jumbotron">
+        <h1 class="display-4">Carritos del Usuario:</h1>
+            <% if (carts == 0) {%>
+                <h2>No hay carritos.</h2>
+            <% } else { %>
+                
+                    <% for (let i = 0; i < carts.length; i++) { %>
+                        <card class="card text-black bg-light mb-3" name="<%=i%>">
+                            <div class="card-header" id="carrito-<%=i%>">Carrito ID: <%= carts[i].id %></div>
+                            <div class="card-body">
+                                <h6 class="card-title" id="user-<%=i%>">Usuario:</h6>
+                                <p class="card-text" id="user-<%=i%>">
+                                    <p> <a>Email:</a> <%= carts[i].user.email %></p>
+                                    <p> <a>Nombre:</a> <%= carts[i].user.name %></p>
+                                    <p> <a>Teléfono:</a> <%= carts[i].user.phone %></p>
+                                </p>
+                                <h6 class="card-title" id="products-<%=i%>">Productos:</h6>
+                                <p class="card-text">
+                                    <% if (carts[i].product.length == 0) {%>
+                                        <p>No hay productos.</p>
+                                    <% } else { %>
+                                        <table name="productsTable">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nombre</th>
+                                                <th>Precio</th>
+                                                <th>Cantidad</th>
+                                                <th>Subtotal</th>
+                                            </tr>
+                                            <% for (let x = 0; x < carts[i].product.length; x++) { %>
+                                                <tr>
+                                                    <td><%= carts[i].product[x]._id %></td>
+                                                    <td><%= carts[i].product[x].name %></td>
+                                                    <td><%= carts[i].product[x].price %></td>
+                                                    <td><%= carts[i].product[x].quantity %></td>
+                                                    <td><%= carts[i].product[x].price * carts[i].product[x].quantity %></td>
+                                                </tr>
+                                            <% } %>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Total:</td>
+                                                <td><%= carts[i].total %></td>
+                                            </tr>
+                                        </table>
+                                    <% } %>
+                                </p>
+                                <button id="buyCart-<%=carts[i].id%>" class="btn btn-primary" name="buy-<%=i%>">Comprar</button>
+                                <button id="deleteCart-<%=carts[i].id%>" class="btn btn-danger" name="<%=carts[i].id%>">Eliminar</button>
+                            </div>
+                        <% } %>
+                        </card>
+                    <% } %>
+    </div>
+    <script>
+        const btnDeleteCart = document.querySelectorAll('[id ^= "deleteCart-"]')
+        btnDeleteCart.forEach(element => {
+            element.addEventListener('click', async () => {
+                //obtengo por split el id del boton
+                const id = element.id.split('-')[1]
+                //const valueName = element.attributes.name.value;
+                
+                //console.log("Carrito ID a eliminar: " + id + valueName);
+                const response = await fetch(`/api/carts/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                if (data.status === '200') {
+                    alert("Carrito eliminado correctamente.");
+                    location.reload();
+                }
+                else{ alert("Error al eliminar el carrito."); }
+            });
+        });
+        
+        //script que confirmará la compra y generará la orden
+        const btnAddCart = document.querySelectorAll('[id ^= "buyCart-"]')
+        btnAddCart.forEach(element => {
+            element.addEventListener('click', async () => {
+                //console.log("clic en button comprar")
+                //obtengo por split el id del boton
+                const id = element.id.split('-')[1]
+                //const num =  element.name.split('-')[1];
+                
+                const response = await fetch(`/api/carts/id/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+                    
+                const response2 = await fetch(`/api/orders`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+                    
+                    const data2 = await response2.json();
+                    if (data2.status === '200') {
+                        alert("Carrito comprado correctamente.");
+                        location.reload();
+                    }
+                    else{ alert("Error al comprar el carrito."); }
+                });
+        });
+
+
+    </script>
+<%- include('partials/footer'); -%>

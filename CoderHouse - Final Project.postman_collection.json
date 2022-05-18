@@ -1,0 +1,566 @@
+{
+	"info": {
+		"_postman_id": "ac786b78-9d98-4610-a551-ff56208dc35f",
+		"name": "CoderHouse - Final Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "GET /api/products/list",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/productos/id/:id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/id/6276089f74aeede2ac62885c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"id",
+								"6276089f74aeede2ac62885c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/productos/category/:category",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/category/importada",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"category",
+								"importada"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT /api/productos/id/:id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"CERVEZA\",\r\n    \"price\": 10,\r\n    \"imageName\": \"Screenshot_2.png\",\r\n    \"id\": \"627608249787fda66955ce43\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/id/627608249787fda66955ce43",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"id",
+								"627608249787fda66955ce43"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete /api/productos/id/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products/id/625876608816fcee0182726d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"id",
+								"625876608816fcee0182726d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/products/ upload",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Cerveza Negra\",\r\n    \"description\": \"Cerveza Negra importada 333cc\",\r\n    \"price\": 200,\r\n    \"stock\": 1400,\r\n    \"thumbnail\": \"imagenCervezanegra.jpg\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "GET /api/orders",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete /api/orders/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/41kTadGTusdY14yGtiT1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"41kTadGTusdY14yGtiT1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/orders",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"carts\": {\r\n        \"user\": {\r\n            \"email\": \"prueba322113@prueba.com\",\r\n            \"name\": \"prueba33\",\r\n            \"phone\": \"1122331455\",\r\n            \"_id\": \"6282c2703622f446dff87033\"\r\n        },\r\n        \"product\": [\r\n            {\r\n                \"name\": \"CERVEZA\",\r\n                \"price\": 20,\r\n                \"quantity\": 2,\r\n                \"type\": \"negra\",\r\n                \"category\": \"importada\",\r\n                \"_id\": \"6282c2703622f446dff87034\"\r\n            },\r\n            {\r\n                \"name\": \"CERVEZA2\",\r\n                \"price\": 30,\r\n                \"quantity\": 2,\r\n                \"type\": \"blond\",\r\n                \"category\": \"importada\",\r\n                \"_id\": \"6282c2703622f446dff87035\"\r\n            }\r\n        ],\r\n    \"total\": 100,\r\n    \"createdDate\": \"16/05/2022 18:30:24\",\r\n    \"updatedDate\": \"16/05/2022 18:30:24\",\r\n    \"id\": \"6282c2703622f446dff87032\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "carts",
+			"item": [
+				{
+					"name": "GET /api/carts/",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /api/carts/:email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/carts/e.beer.it.79@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"carts",
+								"e.beer.it.79@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET /carts/:id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/carts/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"carts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/carts",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"id_product\": 1,\r\n    \"quantity\": 20\r\n},\r\n{\r\n    \"id_product\": 2,\r\n    \"quantity\": 30\r\n}\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/orders/1/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"1",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST /api/carts/:id",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"6282f829f8787b7323c48731\",\r\n    \"product\": [{\r\n    \"name\": \"CERVEZA QULMES\",\r\n    \"price\": 200,\r\n    \"quantity\": 2,\r\n    \"type\": \"lager\",\r\n    \"category\": \"nacional\"\r\n    },\r\n    {\r\n    \"name\": \"CERVEZA HEINEKEN\",\r\n    \"price\": 22,\r\n    \"quantity\": 23,\r\n    \"type\": \"lager\",\r\n    \"category\": \"nacional\"\r\n    }]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/carts/6282f829f8787b7323c48731",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"carts",
+								"6282f829f8787b7323c48731"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete /api/carts/:id/products/:id_prod",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/carts/6282f829f8787b7323c48731/6282f829f8787b7323c48734",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"carts",
+								"6282f829f8787b7323c48731",
+								"6282f829f8787b7323c48734"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete /api/carts/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/carts/6282f829f8787b7323c48731/6282f829f8787b7323c48734",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"carts",
+								"6282f829f8787b7323c48731",
+								"6282f829f8787b7323c48734"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "add user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2NTI3MjgxNTcsInNjb3BlIjoiZnVsbF9hY2Nlc3MiLCJzdWIiOiJsYWxhbGFuZHxnb250byIsImp0aSI6IjdWYmR6Nm0yWTZudnI1MWUiLCJhbGciOiJIUzI1NiIsImlhdCI6MTY1MjcyNDU1N30.1SMcNDHy2ohL3yM_vFwAG5T1kN9YqAa8KGu8l51ZS-Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"name\": \"admin\",\r\n    \"age\": 22,\r\n    \"address\": \"calle teee 123\",\r\n    \"phone\": \"122233333\",\r\n    \"password\": \"Admin123\",\r\n    \"rol\": \"customer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

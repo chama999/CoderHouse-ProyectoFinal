@@ -1,0 +1,50 @@
+<%- include('partials/header'); -%>
+<%- include('partials/nav'); -%>
+
+    <h3>Carga Producto</h3>
+    <form action="/api/products" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Nombre*</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="Nombre del Producto">
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción</label>
+            <input name="description" type="text" class="form-control" id="description" placeholder="Descripción del Producto">
+        </div>
+        <div class="form-group">
+            <label for="category">Categoría*</label>
+            <input name="category" type="text" list="categories" class="form-control" id="category" placeholder="Categoría del Producto">
+        </div>
+        <datalist id="categories">
+            <option value="Nacional"></option>
+            <option value="Importada"></option>
+            <option value="Artesanal"></option>
+        </datalist>
+
+
+        <div class="form-group">
+            <label for="type">Tipo*</label>
+            <input name="type" type="list" list="tipos" class="form-control" id="type" placeholder="Tipo del Producto">
+        </div>
+
+        <datalist id="tipos">
+            <option value="Trigo"></option>
+            <option value="Negra"></option>
+            <option value="Roja"></option>
+            <option value="IPA"></option>
+            <option value="Blond"></option>
+            <option value="Lager"></option>
+        </datalist>
+        
+        <div class="form-group">
+            <label for="price">Precio*</label>
+            <input name="price" type="text" class="form-control" id="price" placeholder="Precio del Producto">
+        </div>
+        <div class="form-group">
+            <label for="file">Imagen del producto*</label>
+            <input type="file" class="form-group-file" name="file" id="file">
+        </div>
+        <button type="submit" class="btn btn-dark">Crear</button>
+    </form>
+    <br>
+<%- include('partials/footer'); -%>

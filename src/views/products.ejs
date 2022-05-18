@@ -1,0 +1,133 @@
+<%- include('partials/header'); -%>
+<%- include('partials/nav'); -%>
+
+<div id="contenido">
+    <% if (list.length == 0) {%>
+        <h2>No hay productos.</h2>
+    <% } else { %>
+        <table name="productsTable" class="table table-dark">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col"><b>Nombre</b></th>
+                    <th scope="col"><b>Descripción</b></th>
+                    <th scope="col"><b>Categoría</b></th>
+                    <th scope="col"><b>Tipo</b></th>
+                    <th scope="col"><b>Precio</b></th>
+                    <th scope="col"><b>Imagen</b></th>
+                    <th scope="col"><b>Acciones</b></th>
+                </tr>
+            </thead>
+            <tbody>
+            <% list.forEach((products) => { %>
+                <tr>
+                    <td class="name" scope="row"><%= products.name %></td>
+                    <td class="description"><%= products.description %></td>
+                    <td class="category"><%= products.category %></td>
+                    <td class="type"><%= products.type %></td>
+                    <td class="price"><%= products.price %></td>
+                    <td class="image"><img src=<%= "../../uploads/" + products.imageName %> width="100px;"></td>
+                    <td>
+                        <label for="quantity"> Cantidad: </label>
+                        <input class="quantity" type="number" id="quantity" name="quantity" min="1" max="10" default="0"/>
+                    </td>
+                </tr>
+            <% }) %>
+            </tbody>
+        </table>
+    <% } %>
+    <button id="addCart" type="submit" class="btn btn-dark" onclick="addToCart()">Agregar al carrito</button>
+</div>
+
+<script>
+
+    let products = [];
+    let object={};
+
+    async function addToCart() {
+        const table = document.querySelector("table");
+        const tbodyRowCount = table.tBodies[0].rows.length;
+        
+
+
+        for(let i = 0; i < tbodyRowCount; i++) {
+            values = Number(document.getElementsByClassName("quantity")[i].value);
+            if(values > 0 && typeof values === "number") {
+                let record={};
+                console.log("ingreso: "+ [i] + " veces a la función")
+                record.name =  document.getElementsByClassName("name")[i].innerHTML
+                record.category =  document.getElementsByClassName("category")[i].innerHTML || "no informado"
+                record.type =  document.getElementsByClassName("type")[i].innerHTML || "no informado"
+                record.price =  document.getElementsByClassName("price")[i].innerHTML || "0"
+                record.quantity =  document.getElementsByClassName("quantity")[i].value
+                products.push(record);
+                console.log("record: "+ JSON.stringify(record))
+                console.log("product: "+ JSON.stringify(products))
+            };
+        };
+    };
+    
+    let user = getUser().then(data => {
+        console.log("Data UseR: " + data);
+        object.user = data;
+    })
+    .catch(error => {
+        console.log("Error: " + error);
+    });
+    object['product'] = products;
+    console.log(JSON.stringify(object));
+
+    const btnAddCart = document.getElementById("addCart");
+    btnAddCart.addEventListener('click', async _ => {
+        const response = await fetch('/api/carts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(object)
+        });
+        console.log("JSON: " + JSON.stringify(object));
+        const data = await response.json();
+        console.log("Response: " + JSON.stringify(data));
+        console.log("Response status: " + response.status);
+        if (response.status == "200") {
+            alert("Productos agregados al carrito.");
+            setInterval(function(){
+                window.location.replace("/carts/"+object.user.email);
+            }, 500);
+        } else {
+            alert(data.message);
+        };
+    });
+
+    async function getUser() {
+        let user = {}
+        email = await cookieStore.getAll("email");
+        user.email = decodeURIComponent(email[0].value);
+        username = await cookieStore.getAll("name");
+        user.name = decodeURIComponent(username[0].value);
+        phone = await cookieStore.getAll("phone");
+        user.phone = decodeURIComponent(phone[0].value);
+        console.log("objeto user" + JSON.stringify(user))
+        return user
+    }
+
+    let inputBox = document.getElementById("quantity");
+
+    let invalidChars = [
+    "-",
+    "+",
+    "e",
+    ];
+
+    inputBox.addEventListener("input", function() {
+    this.value = this.value.replace(/[e\+\-]/gi, "");
+    });
+
+    inputBox.addEventListener("keydown", function(e) {
+    if (invalidChars.includes(e.key)) {
+        e.preventDefault();
+    }
+    });
+</script>
+
+<%- include('partials/footer'); -%>

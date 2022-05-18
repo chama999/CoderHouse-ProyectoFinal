@@ -1,0 +1,14 @@
+<%- include('partials/header'); -%>
+<%- include('partials/nav'); -%>
+    <div class="jumbotron">
+        <h1 class="display-4">Info del server.</h1>
+        <p class="lead">
+            <p> <a>Sistema Operativo:</a> <%= operateSystem %></p>
+            <p> <a>Id de proceso:</a> <%= processId %></p>
+            <p> <a>Pirectorio:</a> <%= path %></p>
+            <p> <a>Nombre del proceso:</a> <%= processTitle %></p>
+            <p> <a>Uso de memoria:</a> <%= JSON.stringify(memoryUsage) %></p>
+            <p> <a>Versión de Node:</a> <%= nodeVersion %></p>
+        </p>
+    </div>
+<%- include('partials/footer'); -%>

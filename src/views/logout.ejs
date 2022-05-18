@@ -1,0 +1,12 @@
+<%- include('partials/header'); -%>
+    <div class="alert alert-dismissible alert-secondary">
+        <h1 class="alert alert-dismissible alert-secondary">
+            <a href="#" class="alert-link">Hasta luego, <strong><%=email%></strong>!</a>
+        </h1>
+    </div>
+    <script>
+        setTimeout(() => {
+            location.href = '/'
+        }, 2000)
+    </script>
+<%- include('partials/footer'); -%>

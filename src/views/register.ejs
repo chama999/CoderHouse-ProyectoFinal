@@ -1,0 +1,103 @@
+<%- include('partials/header'); -%>
+    <div id="#login" class="container mt-dark">
+        <div class="jumbotron">
+            <h1>Bienvenido,
+                <small class="text-muted"> por favor ingrese sus datos</small>
+            </h1>
+            <br>
+            <div id="msg"></div>
+              <!-- Mensajes de Verificación -->
+              <div id="error" class="alert alert-danger ocultar" role="alert">
+                  Las Contraseñas no coinciden, vuelve a intentar !
+              </div>
+              <div id="ok" class="alert alert-success ocultar" role="alert">
+                  Las Contraseñas coinciden ! (Procesando formulario ... )
+              </div>
+              <!-- Fin Mensajes de Verificación -->
+            <br>
+            <fieldset>
+            <legend>Registro</legend>
+            <div class="form-control">
+                <form action="/register-web" method="post" autocomplete="off" id="register" onsubmit="verificarPasswords(); return false">
+                    <br>
+                    <label class="form-label mt-4" for="name">Nombre</label>
+                    <div class="form-floating mb-3">
+                      <input class="form-control" type="text" id="name" name="name" placeholder="Nombre" required/>
+                      <label for="name">Ingrese su nombre</label>
+                    </div>
+                    <br>
+                    <label class="form-label mt-4" for="email">Ingrese su mail  <small class="text-muted"> (Se utilizará como Usuario) </small></label>
+                    <div class="form-floating mb-3">
+                      <input class="form-control" type="email" id="email" name="email" placeholder="ejemplo@dominio.com" required/>
+                      <label for="email">Ingrese su mail</label>
+                    </div>
+                    <br>
+                    <label class="form-label mt-4" for="password">Contraseña <small class="text-muted"> (Mínimo: 8 caracteres.)</small></label>
+                    <div class="form-floating mb-3">
+                      <input class="form-control" type="password" id="password" name="password" placeholder="CoderHouse2022" required/>
+                      <label for="password">Contraseña</label>
+                    </div>
+                    <label class="form-label mt-4" for="password">Repita la contraseña. </label>
+                    <div class="form-floating mb-3">
+                      <input class="form-control" type="password" id="password2" name="password2" placeholder="CoderHouse2022" required/>
+                      <label for="password">Repita la contraseña</label>
+                    </div>
+                    <br>
+                    <label class="form-label mt-4" for="age">Edad</label>
+                    <div class="form-floating mb-3">
+                      <input class="form-control" type="text" id="age" name="age" placeholder="18" required/>
+                      <label for="age">Ingrese su edad</label>
+                    </div>
+                    <br>
+                    <label class="form-label mt-4" for="address">Dirección:</label>
+                    <div class="form-floating mb-3">
+                      <input class="form-control" type="text" id="address" name="address" placeholder="Calle Altura XXXX" required/>
+                      <label for="address">Ingrese su dirección</label>
+                    </div>
+                    <br>
+                    <label class="form-label mt-4" for="phone">Teléfono:</label>
+                    <div class="form-floating mb-3">
+                      <input class="form-control" type="text" id="phone" name="phone" placeholder="1122334455" required/>
+                      <label for="age">Ingrese su teléfono:</label>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-success mt-3" id="registerButton">Registrarse</button>
+                </form>
+            </div>
+            <br>
+            <div>
+                <a href="/login">Iniciar Sesion</a>
+            </div>
+    </div>
+    <script>
+      function verificarPasswords() {
+        // Obtenemos los valores de los campos de contraseñas 
+          pass1 = document.getElementById('password');
+          pass2 = document.getElementById('password2');
+          // Verificamos si las constraseñas no coinciden
+          if (pass1.value != pass2.value) {
+          
+              // Si las constraseñas no coinciden mostramos un mensaje
+              document.getElementById("error").classList.add("mostrar");
+          
+              return false;
+          }
+          else {
+              // Si las contraseñas coinciden ocultamos el mensaje de error
+              document.getElementById("error").classList.remove("mostrar");
+          
+              // Mostramos un mensaje mencionando que las Contraseñas coinciden
+              document.getElementById("ok").classList.remove("ocultar");
+          
+              // Desabilitamos el botón de login
+              document.getElementById("registerButton").disabled = true;
+
+              // Refrescamos la página (Simulación de envío del formulario) 
+              setTimeout(function() {
+                document.getElementById("register").submit();
+              }, 3000);
+              return true;
+          }
+      }
+    </script>
+<%- include('partials/footer'); -%>

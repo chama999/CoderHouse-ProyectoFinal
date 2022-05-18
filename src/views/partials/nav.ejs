@@ -1,0 +1,76 @@
+<!-- NAV BAR-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index">E-BEERS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="/index">Inicio
+              <span class="visually-hidden">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
+                <div class="dropdown-menu navbar-dark bg-dark">
+                    <a class="dropdown-item text-white-50" href="/products">Lista de Productos</a>
+                    <a id="addproduct" class="dropdown-item text-white-50" href="/newProduct" >Agregar Producto</a>
+                </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="linkCarts">Carrito</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contacts">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Desconectarse</a>
+          </li>
+          <!--
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Prueba Dropdown</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">Item1</a>
+              <a class="dropdown-item" href="#">Item 2</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+          </li>
+          -->
+  
+        </ul>
+        <!-- BUSCADOR
+        <form class="d-flex">
+          <input class="form-control me-sm-2" type="text" placeholder="Buscar">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+        -->
+      </div>
+    </div>
+  </nav>
+  <script>
+            cookieStore.getAll('rol').then(data => {
+              if (data[0].value == "customer") {
+                document.getElementById("addproduct").setAttribute("href", "javascript:void(0)");
+                document.getElementById("addproduct").setAttribute("onclick", "alert('No tienes permisos para acceder a esta funcionalidad')");
+                }
+              }
+            )
+
+            document.getElementById("linkCarts").addEventListener("click", function(){
+              cookieStore.getAll('email').then(data => {
+                if (data[0].value) {
+                  window.location.replace("/carts/"+data[0].value);
+                } else {
+                  alert("Debe iniciar sesión para ver su carrito");
+                  window.location.replace("/login");
+                }
+
+              }
+            )
+            });
+  </script>

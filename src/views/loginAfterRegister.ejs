@@ -1,0 +1,25 @@
+<%- include('partials/header'); -%>
+    <div id="#login" class="container mt-dark">
+        <div class="jumbotron">
+            <h1 class="text-light">Gracias por haberse registrado,
+                <small class="text-light"> por favor, ingrese nuevamente sus datos para el ingreso al sitio.</small>
+            </h1>
+            <br>
+            <fieldset>
+            <div class="form-group">
+                <form action="/login" method="post" autocomplete="off">
+                    <label class="form-label mt-4" for="email">Ingrese su Usuario</label>
+                    <div class="form-floating mb-3">
+                      <input class="form-control" type="text" id="email" name="email" placeholder="usuario@dominio" required/>
+                      <label for="email" class="text-black-50">Usuario</label>
+                    </div>
+                    <label class="form-label mt-4" for="password">Ingrese su Contraseña</label>
+                    <div class="form-floating mb-3">
+                        <input class="form-control" type="password" id="password" name="password" placeholder="Contraseña" required/>
+                        <label for="password" class="text-black-50">Contraseña</label>
+                    </div>
+                    <button class="btn btn-success mt-3">Ingresar</button>
+                </form>
+            </div>            
+    </div>
+<%- include('partials/footer'); -%>
