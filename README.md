@@ -1,12 +1,22 @@
-# CoderHouse-ProyectoFinal
+﻿# CoderHouse-ProyectoFinal
 Repositorio donde se almacena la entrega del proyecto final realizado en CoderHouse.
 
 ## ¿De que se trata? 
-El sistema se refiere a una Ecommerce de Cervezas.
+El sistema se refiere a una Ecommerce de Cervezas. Los usuarios deberán registrarse a través del endpoint http://{hostname}:{port}/register, el sistema enviará un mail de alta de usuario.
+Posteriormente le solicitará realizar el login con las credenciales generadas.
+Una vez dentro del sistema, el usuario podrá consultar la lista de productos y generar carritos de compra. Dentro del listado de Carritos podrá generar las ordenes de pedido. El sistema enviará un mail de confirmación de la orden al usuario.
+
+El usuario administrador se generará por API a traves del endpoint: http://localhost:3000/register
+La lista de productos se puede cargar por la web o a traves de la API: http://localhost:3000/api/products utilizando Content-Disposition: form-data.
+A traves de las rutas: http://localhost:3000/api/products/id/{:id} podrá realizar la eliminación de un producto y la actualización de un producto con la ruta: http://localhost:3000/api/products/id/{:id}
+El usuario administrador podrá ver el listado de carritos de todos los usuarios del sistema.
+
 
 # Configuración. 
 * Dentro del archivo Config.js se permite la configuración de: Paths, String Connection a Base de datos Mongo o Mongo Atlas y datos para Nodemailer.
 * Se entrega archivo .env que contiene los parámetros de inicialización del server: Port, Tiempos de expiración de Cookies, Persistencia y NODE_ENV.
+
+- Se entrega el desarrollo preparado para utilizar con Mongo Atlas.
 
 # Arbol de archivos
 - src
